@@ -40,9 +40,9 @@
                 app:layout_constraintTop_toTopOf="parent"/>
 
             <ImageView
-                android:id="@+id/iv_imgFilm"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:id="@+id/iv_imgAct"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
                 android:contentDescription="TODO"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -63,7 +63,7 @@
                 android:textColor="#303179"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/tv_labeldeces"
-                app:layout_constraintTop_toBottomOf="@+id/iv_imgFilm"/>
+                app:layout_constraintTop_toBottomOf="@+id/iv_imgAct"/>
 
             <TextView
                 android:id="@+id/tv_labeldeces"
@@ -78,7 +78,7 @@
                 android:layout_marginTop="10sp"
                 app:layout_constraintLeft_toRightOf="@+id/tv_labelnaiss"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_imgFilm"/>
+                app:layout_constraintTop_toBottomOf="@+id/iv_imgAct"/>
 
             <TextView
                 android:id="@+id/tv_naiss"

@@ -20,7 +20,7 @@ class ActorViewModel(
 ) : AndroidViewModel(application)
 {
     private val baseStr:String = "Bearer "
-    private val imgURL: String = "http://cinema.erebz.fr:80/img/realisateurs/"
+    private val imgURL: String = "http://cinema.erebz.fr:80/img/acteurs/"
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     private val _actor = MutableLiveData<Acteur>()

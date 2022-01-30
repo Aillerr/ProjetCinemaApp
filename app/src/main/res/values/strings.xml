@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ApplicationCinéma</string>
+    <string name="app_name">Cinéma AZZ</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="btFilms">Films</string>
@@ -29,4 +29,6 @@
     <string name="tvListLabel">Personnages joués par l\'acteur :</string>
     <string name="persolabel">Personnages dans le film :</string>
     <string name="labelfilmreal">"Films réalisés : "</string>
+    <string name="hometitle">Choisir la liste à consulter</string>
+    <string name="titleapp">Connexion</string>
 </resources>

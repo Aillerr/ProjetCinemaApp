@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.model.GlideUrl
 import com.polytech.applicationcinma.R
 import com.polytech.applicationcinma.databinding.FragmentFilmBinding
 import com.polytech.applicationcinma.databinding.FragmentPersonBinding
@@ -46,21 +47,21 @@ class PersonFragment : Fragment() {
         }
 
         viewModel.apiOK.observe(viewLifecycleOwner, { res ->
-
+            //No image
         })
 
         binding.tvActor.setOnClickListener {
              this.findNavController().navigate(
                 PersonFragmentDirections.actionPersonFragmentToActorFragment(token,viewModel.aid)
             )
-            Toast.makeText(this.context, "Going to actor ${binding.tvActor.text}", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this.context, "Going to actor ${binding.tvActor.text}", Toast.LENGTH_SHORT).show()
         }
 
         binding.tvFilm.setOnClickListener {
             this.findNavController().navigate(
                 PersonFragmentDirections.actionPersonFragmentToFilmFragment(token,viewModel.fid)
             )
-            Toast.makeText(this.context, "Going to film ${binding.tvFilm.text}", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this.context, "Going to film ${binding.tvFilm.text}", Toast.LENGTH_SHORT).show()
         }
 
 

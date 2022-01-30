@@ -11,6 +11,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.model.Headers
 import com.polytech.applicationcinma.R
 import com.polytech.applicationcinma.adapters.ActorListener
 import com.polytech.applicationcinma.adapters.MyListAdapterActor
@@ -52,7 +54,15 @@ class ActorFragment : Fragment() {
         }
 
         viewModel.apiOK.observe(viewLifecycleOwner, { res ->
-
+            res?.let {
+                val glideUrl = GlideUrl(
+                    viewModel.actor.value?.image,
+                    Headers { mutableMapOf("Authorization" to "Bearer $token") }
+                )
+                Glide.with(this)
+                    .load(glideUrl)
+                    .into(binding.ivImgAct)
+            }
         })
 
         val adapter = MyListAdapterPerson(PersonListener { pid ->
@@ -61,9 +71,8 @@ class ActorFragment : Fragment() {
                 ActorFragmentDirections
                     .actionActorFragmentToPersonFragment(token,pid)
             )
-            Toast.makeText(this.context, "Going to perso $pid", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this.context, "Going to perso $pid", Toast.LENGTH_SHORT).show()
         })
-
 
         binding.liPersonslist.adapter = adapter
         viewModel.personnages.observe(viewLifecycleOwner,  {
@@ -71,9 +80,6 @@ class ActorFragment : Fragment() {
                 adapter.submitList(it)
             }
         })
-
-
-
 
         return binding.root
     }

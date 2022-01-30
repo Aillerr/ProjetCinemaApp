@@ -11,6 +11,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.model.Headers
+import com.bumptech.glide.request.RequestOptions
 import com.polytech.applicationcinma.R
 import com.polytech.applicationcinma.adapters.*
 import com.polytech.applicationcinma.databinding.FragmentFilmBinding
@@ -50,10 +53,16 @@ class FilmFragment : Fragment() {
             tvListlabel.text = getString(R.string.persolabel)
         }
 
+
         viewModel.apiOK.observe(viewLifecycleOwner, { res ->
             res?.let {
-                //Glide.with(this).load(viewModel.film.value?.Image).into(binding.ivImgFilm);
-
+                val glideUrl = GlideUrl(
+                    viewModel.film.value?.Image,
+                    Headers { mutableMapOf("Authorization" to "Bearer $token") }
+                )
+                Glide.with(this)
+                    .load(glideUrl)
+                    .into(binding.ivImgFilm)
             }
         })
 
@@ -63,7 +72,7 @@ class FilmFragment : Fragment() {
                 FilmFragmentDirections
                     .actionFilmFragmentToPersonFragment(token,aid)
             )
-            Toast.makeText(this.context, "Going to perso $aid", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this.context, "Going to perso $aid", Toast.LENGTH_SHORT).show()
         })
 
 
@@ -79,7 +88,7 @@ class FilmFragment : Fragment() {
                 FilmFragmentDirections
                     .actionFilmFragmentToRealFragment(token,viewModel.rid)
             )
-            Toast.makeText(this.context, "Going to real ${binding.tvReal.text}", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this.context, "Going to real ${binding.tvReal.text}", Toast.LENGTH_SHORT).show()
         }
 
 

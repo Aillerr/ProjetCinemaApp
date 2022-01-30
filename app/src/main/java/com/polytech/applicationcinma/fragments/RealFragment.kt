@@ -10,6 +10,9 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.model.Headers
 import com.polytech.applicationcinma.R
 import com.polytech.applicationcinma.adapters.*
 import com.polytech.applicationcinma.databinding.FragmentPersonBinding
@@ -47,7 +50,15 @@ class RealFragment : Fragment() {
         }
 
         viewModel.apiOK.observe(viewLifecycleOwner, { res ->
-
+            res?.let {
+                val glideUrl = GlideUrl(
+                    viewModel.real.value?.Image,
+                    Headers { mutableMapOf("Authorization" to "Bearer $token") }
+                )
+                Glide.with(this)
+                    .load(glideUrl)
+                    .into(binding.ivImgRea)
+            }
         })
 
         val adapter = MyListAdapterPersoFilms(FilmsPersoListener { fid ->
@@ -56,7 +67,7 @@ class RealFragment : Fragment() {
                 RealFragmentDirections
                     .actionRealFragmentToFilmFragment(token,fid)
             )
-            Toast.makeText(this.context, "Going to film $fid", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this.context, "Going to film $fid", Toast.LENGTH_SHORT).show()
         })
 
 

@@ -42,6 +42,7 @@ class LoginFragment : Fragment() {
             evPwd.hint = getString(R.string.evPwd)
             btValidate.text = getString(R.string.login)
             tvCreateacc.text = getString(R.string.register)
+            tvTitle.text = getString(R.string.titleapp)
         }
 
         viewModel.navigateToHomeFragment.observe(viewLifecycleOwner, { token ->

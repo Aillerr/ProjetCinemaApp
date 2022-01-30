@@ -39,6 +39,7 @@ class HomeFragment : Fragment() {
             btPerson.text = getString(R.string.btPerson)
             btReal.text = getString(R.string.btReal)
             btActor.text = getString(R.string.btActor)
+            tvTitle.text = getString(R.string.hometitle)
         }
 
         binding.btFilms.setOnClickListener {
