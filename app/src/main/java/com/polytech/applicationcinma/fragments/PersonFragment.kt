@@ -5,8 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.polytech.applicationcinma.R
 import com.polytech.applicationcinma.databinding.FragmentFilmBinding
@@ -39,12 +41,27 @@ class PersonFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.apply {
-
+            tvLabelactor.text = getString(R.string.tvLabelactor)
+            tvLabelfilm.text = getString(R.string.tvLabelfilm)
         }
 
         viewModel.apiOK.observe(viewLifecycleOwner, { res ->
 
         })
+
+        binding.tvActor.setOnClickListener {
+             this.findNavController().navigate(
+                PersonFragmentDirections.actionPersonFragmentToActorFragment(token,viewModel.aid)
+            )
+            Toast.makeText(this.context, "Going to actor ${binding.tvActor.text}", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.tvFilm.setOnClickListener {
+            this.findNavController().navigate(
+                PersonFragmentDirections.actionPersonFragmentToFilmFragment(token,viewModel.fid)
+            )
+            Toast.makeText(this.context, "Going to film ${binding.tvFilm.text}", Toast.LENGTH_SHORT).show()
+        }
 
 
 

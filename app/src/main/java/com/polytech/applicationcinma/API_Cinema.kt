@@ -38,13 +38,13 @@ interface Api {
     fun getFilms(@Header("Authorization") authHeader: String) : Deferred<List<PersoFilmList>>
 
     @GET("acteurs/list")
-    fun getActors(@Header("Authorization") authHeader: String) : Deferred<List<Acteur>>
+    fun getActors(@Header("Authorization") authHeader: String) : Deferred<List<PersoActeurList>>
 
     @GET("realisateurs/list")
-    fun getReals(@Header("Authorization") authHeader: String) : Deferred<List<Realisateur>>
+    fun getReals(@Header("Authorization") authHeader: String) : Deferred<List<PersoRealList>>
 
     @GET("personnages/list")
-    fun getPersons(@Header("Authorization") authHeader: String) : Deferred<List<Personnage>>
+    fun getPersons(@Header("Authorization") authHeader: String) : Deferred<List<PersoPersonList>>
 
 
     //ITEM DATA
@@ -52,13 +52,13 @@ interface Api {
     fun getFilm(@Path("NoFilm") NoFilm: Int, @Header("Authorization") authHeader: String): Deferred<PersoFilmList>
 
     @GET("acteurs/{NoActor}")
-    fun getActor(@Path("NoActor") NoActor: Int, @Header("Authorization") authHeader: String): Deferred<Acteur>
+    fun getActor(@Path("NoActor") NoActor: Int, @Header("Authorization") authHeader: String): Deferred<PersoActeurList>
 
     @GET("realisateurs/{NoReal}")
-    fun getReal(@Path("NoReal") NoReal: Int, @Header("Authorization") authHeader: String): Deferred<Realisateur>
+    fun getReal(@Path("NoReal") NoReal: Int, @Header("Authorization") authHeader: String): Deferred<PersoRealList>
 
     @GET("personnages/{NoPerson}")
-    fun getPerson(@Path("NoPerson") NoPerson: Int, @Header("Authorization") authHeader: String): Deferred<Personnage>
+    fun getPerson(@Path("NoPerson") NoPerson: Int, @Header("Authorization") authHeader: String): Deferred<PersoPersonList>
 
 }
 
@@ -101,5 +101,31 @@ data class PersoFilmList(
     @Json(name="montantRecette") val montantRecette: Int,
     @Json(name="realisateur") val realisateur: Realisateur,
     @Json(name="categorie") val categorie: Categorie,
+    @Json(name="personnages") val personnages: List<Personnage>,
+)
+
+data class PersoRealList(
+    @Json(name="noRea") val noRea: Int,
+    @Json(name="nomRea") val nomRea: String,
+    @Json(name="prenRea") val prenRea: String,
+    @Json(name="image") val image: String,
+    @Json(name="films") val films: List<PersoFilmList>,
+)
+
+data class PersoPersonList(
+    @Json(name="noPerso") val noPerso: Int,
+    @Json(name="nomPers") val nomPers: String,
+    @Json(name="film") val film: PersoFilmList,
+    @Json(name="acteur") val acteur: Acteur,
+)
+
+
+data class PersoActeurList(
+    @Json(name="noAct") val noAct: Int,
+    @Json(name="nomAct") val nomAct: String,
+    @Json(name="prenAct") val prenAct: String,
+    @Json(name="dateNaiss") val dateNaiss: String,
+    @Json(name="dateDeces") val dateDeces: String,
+    @Json(name="image") val image: String,
     @Json(name="personnages") val personnages: List<Personnage>,
 )

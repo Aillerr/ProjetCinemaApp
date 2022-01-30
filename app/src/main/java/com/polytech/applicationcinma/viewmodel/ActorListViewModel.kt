@@ -9,6 +9,7 @@ import com.polytech.applicationcinma.MyApi
 import com.polytech.applicationcinma.dao.UtilisateurDAO
 import com.polytech.applicationcinma.model.Acteur
 import com.polytech.applicationcinma.model.Film
+import com.polytech.applicationcinma.model.Personnage
 import com.polytech.applicationcinma.model.Utilisateur
 import kotlinx.coroutines.*
 import java.lang.Exception
@@ -18,6 +19,7 @@ class ActorListViewModel(
     private val token: String = "", // Token
 ) : AndroidViewModel(application)
 {
+    private val baseStr:String = "Bearer "
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     private val _actors = MutableLiveData<List<Acteur>>()
@@ -29,15 +31,25 @@ class ActorListViewModel(
 
     init {
         Log.i("ActorListViewModel", "created")
+        _actors.value = ArrayList()
+        getActorsFromAPI()
     }
 
 
     private fun getActorsFromAPI() {
         coroutineScope.launch {
-            val getPresetsDeferred = MyApi.retrofitService.getActors(token)
+            val getPresetsDeferred = MyApi.retrofitService.getActors(baseStr+token)
             try {
+                var tmplist = ArrayList<Acteur>()
                 val listResult = getPresetsDeferred.await()
-                _actors.value = listResult
+                for(tmp in listResult) {
+                    var newAct= Acteur()
+                    newAct.NoAct = tmp.noAct
+                    newAct.NomAct = tmp.nomAct
+                    newAct.PrenAct = tmp.prenAct
+                    tmplist.add(newAct)
+                }
+                _actors.value = tmplist
             }catch (e: Exception) {
                 Log.i("API ERROR -- ActorList", "Exception with API -- Using local DB")
             }

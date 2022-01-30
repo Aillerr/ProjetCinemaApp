@@ -9,27 +9,19 @@
             type="com.polytech.applicationcinma.viewmodel.ActorViewModel" />
     </data>
 
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="6sp"
-            android:paddingTop="60sp"
+            android:padding="6sp"
             android:background="#F6E6E2">
 
-            <ImageView
-                android:id="@+id/iv_imgFilm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="TODO">
-            </ImageView>
 
             <TextView
                 android:id="@+id/tv_title"
@@ -38,12 +30,113 @@
                 android:layout_marginBottom="16sp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="32sp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:textColor="#303179"
+                android:text="@{viewModel.actor.nomAct + ' ' + viewModel.actor.prenAct}"
                 android:paddingBottom="20dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/iv_imgFilm"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="TODO"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/tv_labelnaiss"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10sp"
+                android:textColor="#303179"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tv_labeldeces"
                 app:layout_constraintTop_toBottomOf="@+id/iv_imgFilm"/>
 
+            <TextView
+                android:id="@+id/tv_labeldeces"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="12sp"
+                android:textColor="#303179"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10sp"
+                app:layout_constraintLeft_toRightOf="@+id/tv_labelnaiss"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_imgFilm"/>
 
+            <TextView
+                android:id="@+id/tv_naiss"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="25sp"
+                android:text="@{viewModel.actor.dateNaiss}"
+                android:paddingBottom="25dp"
+                android:gravity="center"
+                android:textColor="#303179"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tv_deces"
+                app:layout_constraintTop_toBottomOf="@+id/tv_labelnaiss"/>
+
+            <TextView
+                android:id="@+id/tv_deces"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="25sp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:layout_marginTop="10sp"
+                android:textColor="#303179"
+                android:text="@{viewModel.actor.dateDeces}"
+                android:paddingBottom="20dp"
+                app:layout_constraintLeft_toRightOf="@+id/tv_naiss"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_labeldeces"/>
+
+            <TextView
+                android:id="@+id/tv_listlabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:layout_marginTop="25sp"
+                android:textColor="#303179"
+                android:paddingBottom="20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_deces"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/li_personslist"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_listlabel" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/tv_guideline"
@@ -55,4 +148,5 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+    </ScrollView>
 </layout>

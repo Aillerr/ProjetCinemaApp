@@ -6,7 +6,10 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.polytech.applicationcinma.MyApi
+import com.polytech.applicationcinma.PersoFilmList
+import com.polytech.applicationcinma.model.Acteur
 import com.polytech.applicationcinma.model.Film
+import com.polytech.applicationcinma.model.Personnage
 import kotlinx.coroutines.*
 
 class FilmViewModel(
@@ -29,6 +32,10 @@ class FilmViewModel(
     private val _cat = MutableLiveData<String>()
     val cat: LiveData<String>
         get() = _cat
+    private val _personnages = MutableLiveData<List<Personnage>>()
+    val personnages: LiveData<List<Personnage>>
+        get() = _personnages
+    var rid: Int = 0
 
     private fun filmFromAPI() {
         coroutineScope.launch {
@@ -44,6 +51,9 @@ class FilmViewModel(
                 _real.value = filmResult.realisateur.NomRea + " " + filmResult.realisateur.PrenRea
                 _cat.value = filmResult.categorie.LibelleCat.toString()
                 _film.value?.Image = imgURL + filmResult.image
+                rid = filmResult.realisateur.NoRea
+                _personnages.value = filmResult.personnages
+
                 _apiOK.value = true
             }catch (e: Exception) {
                 Log.i("API ERROR -- Film", "Exception with API")
@@ -52,11 +62,13 @@ class FilmViewModel(
         }
     }
 
+
     init {
         Log.i("FilmViewModel", "created")
         _film.value = Film()
         _cat.value = ""
         _real.value = ""
+        _personnages.value = ArrayList()
         filmFromAPI()
     }
 

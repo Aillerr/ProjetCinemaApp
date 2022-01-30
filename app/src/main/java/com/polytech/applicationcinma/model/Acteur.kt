@@ -34,12 +34,17 @@ data class Acteur  (
     @Json(name="dateNaiss")
     @SerializedName("dateNaiss")
     @ColumnInfo(name = "DateNaiss")
-    private var _DateNaiss: Long? = 0L,
+    private var _DateNaiss: String? = "",
 
     @Json(name="dateDeces")
     @SerializedName("dateDeces")
     @ColumnInfo(name = "DateDeces")
-    private var _DateDeces: Long? = 0L,
+    private var _DateDeces: String? = "",
+
+    @Json(name="image")
+    @SerializedName("image")
+    @ColumnInfo(name = "image")
+    private var _image: String? = "",
 
     ): Parcelable,
     BaseObservable() {
@@ -65,18 +70,25 @@ data class Acteur  (
             notifyPropertyChanged(BR.prenAct)
         }
 
-    var DateNaiss: Long?
+    var DateNaiss: String?
         @Bindable get() = _DateNaiss
         set(value) {
             _DateNaiss = value
             notifyPropertyChanged(BR.dateNaiss)
         }
 
-    var DateDeces: Long?
+    var DateDeces: String?
         @Bindable get() = _DateDeces
         set(value) {
             _DateDeces = value
             notifyPropertyChanged(BR.dateDeces)
+        }
+
+    var image: String?
+        @Bindable get() = _image
+        set(value) {
+            _image = value
+            notifyPropertyChanged(BR.image)
         }
 
 
@@ -84,8 +96,9 @@ data class Acteur  (
         parcel.readInt(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readLong(),
-        parcel.readLong(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
         )
 
 
@@ -93,8 +106,9 @@ data class Acteur  (
         parcel.writeInt(NoAct)
         parcel.writeString(NomAct)
         parcel.writeString(PrenAct)
-        DateNaiss?.let { parcel.writeLong(it) }
-        DateDeces?.let { parcel.writeLong(it) }
+        parcel.writeString(DateNaiss)
+        parcel.writeString(DateDeces)
+        parcel.writeString(image)
     }
 
     override fun describeContents(): Int {

@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="6dp"
+        android:background="#F6E6E2"
         android:onClick="@{() -> clickListener.onClick(film)}">
 
         <androidx.constraintlayout.widget.ConstraintLayout

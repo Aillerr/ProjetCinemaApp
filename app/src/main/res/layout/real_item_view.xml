@@ -14,7 +14,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="6sp"
+        android:layout_margin="6dp"
         android:background="#F6E6E2"
         android:onClick="@{() -> clickListener.onClick(real)}">
 
@@ -27,7 +27,7 @@
                 android:id="@+id/tv_name_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{real.nomRea}"
+                android:text="@{real.nomRea + ' ' + real.prenRea}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textSize="20sp"
                 app:layout_constraintLeft_toLeftOf="parent"

@@ -49,13 +49,13 @@ class HomeFragment : Fragment() {
 
         binding.btReal.setOnClickListener {
             this.findNavController().navigate(
-                HomeFragmentDirections.actionHomeFragmentToFilmListFragment(token)
+                HomeFragmentDirections.actionHomeFragmentToRealListFragment(token)
             )
         }
 
         binding.btActor.setOnClickListener {
             this.findNavController().navigate(
-                HomeFragmentDirections.actionHomeFragmentToFilmListFragment(token)
+                HomeFragmentDirections.actionHomeFragmentToActorListFragment(token)
             )
         }
 

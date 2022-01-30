@@ -105,6 +105,9 @@
         <argument
             android:name="aid"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_actorFragment_to_personFragment"
+            app:destination="@id/personFragment" />
     </fragment>
     <fragment
         android:id="@+id/filmFragment"
@@ -117,6 +120,12 @@
         <argument
             android:name="fid"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_filmFragment_to_realFragment"
+            app:destination="@id/realFragment" />
+        <action
+            android:id="@+id/action_filmFragment_to_personFragment"
+            app:destination="@id/personFragment" />
     </fragment>
     <fragment
         android:id="@+id/realFragment"
@@ -129,6 +138,9 @@
         <argument
             android:name="rid"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_realFragment_to_filmFragment"
+            app:destination="@id/filmFragment" />
     </fragment>
     <fragment
         android:id="@+id/personFragment"
@@ -141,5 +153,11 @@
         <argument
             android:name="pid"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_personFragment_to_filmFragment"
+            app:destination="@id/filmFragment" />
+        <action
+            android:id="@+id/action_personFragment_to_actorFragment"
+            app:destination="@id/actorFragment" />
     </fragment>
 </navigation>

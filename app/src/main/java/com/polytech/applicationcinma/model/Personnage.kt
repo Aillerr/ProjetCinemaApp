@@ -15,8 +15,8 @@ import com.squareup.moshi.Json
 @Keep
 @Entity(tableName = "Personnage")
 data class Personnage  (
-    @Json(name="NoPerso")
-    @SerializedName("NoPerso")
+    @Json(name="noPerso")
+    @SerializedName("noPerso")
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "NoPerso")
     private var _NoPerso: Int = 0,
@@ -31,8 +31,8 @@ data class Personnage  (
     @ColumnInfo(name = "NoAct")
     private var _NoAct: Int = 0,
 
-    @Json(name="NomPers")
-    @SerializedName("NomPers")
+    @Json(name="nomPers")
+    @SerializedName("nomPers")
     @ColumnInfo(name = "NomPers")
     private var _NomPers: String? = "",
 

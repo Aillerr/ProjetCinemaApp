@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.polytech.applicationcinma.R
+import com.polytech.applicationcinma.adapters.*
 import com.polytech.applicationcinma.databinding.FragmentFilmBinding
 import com.polytech.applicationcinma.viewmodel.FilmViewModel
 import com.polytech.applicationcinma.viewmodelfactory.FilmViewModelFactory
@@ -46,6 +47,7 @@ class FilmFragment : Fragment() {
             tvLabeldateSortie.text = getString(R.string.tvLabeldateSortie)
             tvLabelduree.text = getString(R.string.tvLabelduree)
             tvLabelrecette.text = getString(R.string.tvLabelrecette)
+            tvListlabel.text = getString(R.string.persolabel)
         }
 
         viewModel.apiOK.observe(viewLifecycleOwner, { res ->
@@ -54,6 +56,31 @@ class FilmFragment : Fragment() {
 
             }
         })
+
+        val adapter = MyListAdapterPerson(PersonListener { aid ->
+            Log.i("INFO -- Preset selected", "Perso choosen : $aid")
+            this.findNavController().navigate(
+                FilmFragmentDirections
+                    .actionFilmFragmentToPersonFragment(token,aid)
+            )
+            Toast.makeText(this.context, "Going to perso $aid", Toast.LENGTH_SHORT).show()
+        })
+
+
+        binding.liPersonslist.adapter = adapter
+        viewModel.personnages.observe(viewLifecycleOwner,  {
+            it?.let {
+                adapter.submitList(it)
+            }
+        })
+
+        binding.tvReal.setOnClickListener {
+             this.findNavController().navigate(
+                FilmFragmentDirections
+                    .actionFilmFragmentToRealFragment(token,viewModel.rid)
+            )
+            Toast.makeText(this.context, "Going to real ${binding.tvReal.text}", Toast.LENGTH_SHORT).show()
+        }
 
 
 

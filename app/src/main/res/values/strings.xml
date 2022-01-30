@@ -22,4 +22,11 @@
     <string name="tvLabeldateSortie">Date de sortie :</string>
     <string name="tvLabelduree">Durée en minutes :</string>
     <string name="tvLabelrecette">Recette en € :</string>
+    <string name="tvLabeldeces">Date de décès :</string>
+    <string name="tvLabelnaiss">Date de naissance :</string>
+    <string name="tvLabelactor">Acteur :</string>
+    <string name="tvLabelfilm">Film :</string>
+    <string name="tvListLabel">Personnages joués par l\'acteur :</string>
+    <string name="persolabel">Personnages dans le film :</string>
+    <string name="labelfilmreal">"Films réalisés : "</string>
 </resources>

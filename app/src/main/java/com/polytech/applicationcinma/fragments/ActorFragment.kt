@@ -1,14 +1,21 @@
 package com.polytech.applicationcinma.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.polytech.applicationcinma.R
+import com.polytech.applicationcinma.adapters.ActorListener
+import com.polytech.applicationcinma.adapters.MyListAdapterActor
+import com.polytech.applicationcinma.adapters.MyListAdapterPerson
+import com.polytech.applicationcinma.adapters.PersonListener
 import com.polytech.applicationcinma.databinding.FragmentActorBinding
 import com.polytech.applicationcinma.viewmodel.ActorViewModel
 import com.polytech.applicationcinma.viewmodel.FilmViewModel
@@ -39,12 +46,32 @@ class ActorFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.apply {
-
+            tvLabeldeces.text = getString(R.string.tvLabeldeces)
+            tvLabelnaiss.text = getString(R.string.tvLabelnaiss)
+            tvListlabel.text = getString(R.string.tvListLabel)
         }
 
         viewModel.apiOK.observe(viewLifecycleOwner, { res ->
 
         })
+
+        val adapter = MyListAdapterPerson(PersonListener { pid ->
+            Log.i("INFO -- Preset selected", "Perso choosen : $pid")
+            this.findNavController().navigate(
+                ActorFragmentDirections
+                    .actionActorFragmentToPersonFragment(token,pid)
+            )
+            Toast.makeText(this.context, "Going to perso $pid", Toast.LENGTH_SHORT).show()
+        })
+
+
+        binding.liPersonslist.adapter = adapter
+        viewModel.personnages.observe(viewLifecycleOwner,  {
+            it?.let {
+                adapter.submitList(it)
+            }
+        })
+
 
 
 

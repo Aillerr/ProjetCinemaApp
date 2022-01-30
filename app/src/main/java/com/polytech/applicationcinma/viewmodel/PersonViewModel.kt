@@ -15,11 +15,20 @@ class PersonViewModel(
     private val pid: Int = 0 // Film ID
 ) : AndroidViewModel(application)
 {
+    private val baseStr:String = "Bearer "
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     private val _perso = MutableLiveData<Personnage>()
     val perso: LiveData<Personnage>
         get() = _perso
+    private val _actor = MutableLiveData<String>()
+    val actor: LiveData<String>
+        get() = _actor
+    private val _film = MutableLiveData<String>()
+    val film: LiveData<String>
+        get() = _film
+    var fid: Int = 0
+    var aid: Int = 0
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main )
 
     /**
@@ -27,10 +36,15 @@ class PersonViewModel(
      */
     private fun persoFromAPI() {
         coroutineScope.launch {
-            val loginDeferred = MyApi.retrofitService.getPerson(pid,token)
+            val loginDeferred = MyApi.retrofitService.getPerson(pid,baseStr+token)
             try {
-                val filmResult = loginDeferred.await()
-                perso.value?.NomPers = filmResult.NomPers
+                val persResult = loginDeferred.await()
+                perso.value!!.NoPerso = persResult.noPerso
+                perso.value!!.NomPers = persResult.nomPers
+                _actor.value=persResult.acteur.NomAct
+                _film.value=persResult.film.titre
+                fid = persResult.film.noFilm
+                aid = persResult.acteur.NoAct
                 _apiOK.value = true
             }catch (e: Exception) {
                 Log.i("API ERROR -- Film", "Exception with API")
@@ -42,6 +56,9 @@ class PersonViewModel(
 
     init {
         Log.i("PersonViewModel", "created")
+        _perso.value = Personnage()
+        _film.value = ""
+        _actor.value = ""
         persoFromAPI()
     }
 
