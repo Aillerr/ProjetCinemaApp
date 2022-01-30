@@ -14,22 +14,22 @@ import com.squareup.moshi.Json
 
 @Keep
 @Entity(tableName = "Categorie")
-data class Categorie  (
-    @Json(name="CodeCat")
-    @SerializedName("CodeCat")
+data class Categorie(
+    @Json(name="codeCat")
+    @SerializedName("codeCat")
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "CodeCat")
-    private var _CodeCat: Int = 0,
+    private var _CodeCat: String? = "",
 
-    @Json(name="LibelleCat")
-    @SerializedName("LibelleCat")
+    @Json(name="libelleCat")
+    @SerializedName("libelleCat")
     @ColumnInfo(name = "LibelleCat")
     private var _LibelleCat: String? = "",
 
     ): Parcelable,
     BaseObservable() {
 
-    var CodeCat: Int
+    var CodeCat: String?
         @Bindable get() = _CodeCat
         set(value) {
             _CodeCat = value
@@ -45,13 +45,13 @@ data class Categorie  (
 
 
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
+        parcel.readString(),
         parcel.readString(),
     )
 
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(CodeCat)
+        parcel.writeString(CodeCat)
         parcel.writeString(LibelleCat)
     }
 

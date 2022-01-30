@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.polytech.applicationcinma.MyApi
+import com.polytech.applicationcinma.PersoFilmList
 import com.polytech.applicationcinma.dao.UtilisateurDAO
 import com.polytech.applicationcinma.model.Film
 import com.polytech.applicationcinma.model.Utilisateur
@@ -17,10 +18,11 @@ class FilmListViewModel(
     private val token: String = "", // Token
 ) : AndroidViewModel(application)
 {
+    private val baseStr:String = "Bearer "
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-    private val _films = MutableLiveData<List<Film>>()
-    val films: LiveData<List<Film>>
+    private val _films = MutableLiveData<List<PersoFilmList>>()
+    val films: LiveData<List<PersoFilmList>>
         get() = _films
 
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main )
@@ -28,12 +30,13 @@ class FilmListViewModel(
 
     init {
         Log.i("FilmListViewModel", "created")
+        getFilmsFromAPI()
     }
 
 
     private fun getFilmsFromAPI() {
         coroutineScope.launch {
-            val getPresetsDeferred = MyApi.retrofitService.getFilms()
+            val getPresetsDeferred = MyApi.retrofitService.getFilms(baseStr+token)
             try {
                 val listResult = getPresetsDeferred.await()
                 _films.value = listResult

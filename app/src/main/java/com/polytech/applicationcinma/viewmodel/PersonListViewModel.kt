@@ -34,7 +34,7 @@ class PersonListViewModel(
 
     private fun getActorsFromAPI() {
         coroutineScope.launch {
-            val getPresetsDeferred = MyApi.retrofitService.getPersons()
+            val getPresetsDeferred = MyApi.retrofitService.getPersons(token)
             try {
                 val listResult = getPresetsDeferred.await()
                 _persons.value = listResult

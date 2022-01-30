@@ -31,7 +31,7 @@ class ActorViewModel(
      */
     private fun actorFromAPI() {
         coroutineScope.launch {
-            val loginDeferred = MyApi.retrofitService.getActor(aid)
+            val loginDeferred = MyApi.retrofitService.getActor(aid,token)
             try {
                 val filmResult = loginDeferred.await()
                 _apiOK.value = true

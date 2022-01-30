@@ -35,7 +35,7 @@ class RealListViewModel(
 
     private fun getActorsFromAPI() {
         coroutineScope.launch {
-            val getPresetsDeferred = MyApi.retrofitService.getReals()
+            val getPresetsDeferred = MyApi.retrofitService.getReals(token)
             try {
                 val listResult = getPresetsDeferred.await()
                 _reals.value = listResult

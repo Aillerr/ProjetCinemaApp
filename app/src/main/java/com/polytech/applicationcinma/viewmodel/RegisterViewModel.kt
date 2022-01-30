@@ -8,6 +8,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.polytech.applicationcinma.LoginInfo
 import kotlinx.coroutines.*
 import java.lang.Exception
 
@@ -43,9 +44,9 @@ class RegisterViewModel(
         viewModelJob.cancel()
     }
 
-    private val _navigateToHomeFragment = MutableLiveData<String?>()
+    private val _navigateToHomeFragment = MutableLiveData<Int?>()
 
-    val navigateToHomeFragment: MutableLiveData<String?>
+    val navigateToHomeFragment: MutableLiveData<Int?>
         get() = _navigateToHomeFragment
 
     fun doneNavigating() {
@@ -96,11 +97,12 @@ class RegisterViewModel(
      * Register with API -- If no API, register into app DB
      */
     private fun registerFromAPI(user: Utilisateur) {
+        val loginfo = LoginInfo(user.NomUtil, user.MotPasse)
         coroutineScope.launch {
-            val registerDeferred = MyApi.retrofitService.register(user)
+            val registerDeferred = MyApi.retrofitService.register(loginfo)
             try {
                 val registerResult = registerDeferred.await()
-                _navigateToHomeFragment.value = registerResult.token
+                _navigateToHomeFragment.value = registerResult.code()
             }catch (e: Exception) {
                 Log.i("API ERROR -- Login", "Exception with API -- Using local DB")
                 _errorRegistering.value = 0

@@ -27,7 +27,7 @@ class PersonViewModel(
      */
     private fun persoFromAPI() {
         coroutineScope.launch {
-            val loginDeferred = MyApi.retrofitService.getPerson(pid)
+            val loginDeferred = MyApi.retrofitService.getPerson(pid,token)
             try {
                 val filmResult = loginDeferred.await()
                 perso.value?.NomPers = filmResult.NomPers

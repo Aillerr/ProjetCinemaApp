@@ -7,8 +7,6 @@ import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.ForeignKey.CASCADE
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import com.polytech.applicationcinma.BR
@@ -20,7 +18,7 @@ import com.squareup.moshi.Json
                                 parentColumns = arrayOf("NoFilm"),
                                 childColumns = arrayOf("NoRea"),
                                 onDelete = CASCADE)])*/
-data class Film  (
+data class Film(
     @Json(name="NoFilm")
     @SerializedName("NoFilm")
     @PrimaryKey(autoGenerate = true)
@@ -40,7 +38,7 @@ data class Film  (
     @Json(name="DateSortie")
     @SerializedName("DateSortie")
     @ColumnInfo(name = "DateSortie")
-    private var _DateSortie: Long = 0L,
+    private var _DateSortie: String? = "",
 
     @Json(name="Budget")
     @SerializedName("Budget")
@@ -67,7 +65,7 @@ data class Film  (
     @ColumnInfo(name = "Image")
     private var _Image: String? = "",
 
-): Parcelable,
+    ): Parcelable,
     BaseObservable() {
 
     var NoFilm: Int
@@ -91,7 +89,7 @@ data class Film  (
             notifyPropertyChanged(BR.duree)
         }
 
-    var DateSortie: Long
+    var DateSortie: String?
         @Bindable get() = _DateSortie
         set(value) {
             _DateSortie = value
@@ -137,7 +135,7 @@ data class Film  (
         parcel.readInt(),
         parcel.readString(),
         parcel.readInt(),
-        parcel.readLong(),
+        parcel.readString(),
         parcel.readInt(),
         parcel.readInt(),
         parcel.readInt(),
@@ -150,7 +148,7 @@ data class Film  (
         parcel.writeInt(NoFilm)
         parcel.writeString(Titre)
         parcel.writeInt(Duree)
-        parcel.writeLong(DateSortie)
+        parcel.writeString(DateSortie)
         parcel.writeInt(Budget)
         parcel.writeInt(MontantRecette)
         parcel.writeInt(NoRea)

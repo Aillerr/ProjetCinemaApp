@@ -29,7 +29,7 @@ class RealViewModel(
 
     private fun realFromAPI() {
         coroutineScope.launch {
-            val realDeferred = MyApi.retrofitService.getReal(rid)
+            val realDeferred = MyApi.retrofitService.getReal(rid,token)
             try {
                 val realResult = realDeferred.await()
 

@@ -12,23 +12,14 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="6sp"
-            android:paddingTop="60sp">
+            android:padding="6sp"
+            android:background="#F6E6E2">
 
-            <ImageView
-                android:id="@+id/iv_imgFilm"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="TODO">
-            </ImageView>
 
             <TextView
                 android:id="@+id/tv_title"
@@ -37,12 +28,223 @@
                 android:layout_marginBottom="16sp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="32sp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:textColor="#303179"
+                android:text="@{viewModel.film.titre}"
                 android:paddingBottom="20dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <ImageView
+                android:id="@+id/iv_imgFilm"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:contentDescription="TODO"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/tv_labelReal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10sp"
+                android:textColor="#303179"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tv_labeldateSortie"
                 app:layout_constraintTop_toBottomOf="@+id/iv_imgFilm"/>
 
+            <TextView
+                android:id="@+id/tv_labeldateSortie"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="12sp"
+                android:textColor="#303179"
+                android:gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10sp"
+                app:layout_constraintLeft_toRightOf="@+id/tv_labelReal"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_imgFilm"/>
 
+            <TextView
+                android:id="@+id/tv_Real"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="25sp"
+                android:text="@{viewModel.real}"
+                android:paddingBottom="25dp"
+                android:gravity="center"
+                android:textColor="#303179"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tv_dateSortie"
+                app:layout_constraintTop_toBottomOf="@+id/tv_labelReal"/>
+
+            <TextView
+                android:id="@+id/tv_dateSortie"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="25sp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:layout_marginTop="10sp"
+                android:textColor="#303179"
+                android:text="@{viewModel.film.dateSortie}"
+                android:paddingBottom="20dp"
+                app:layout_constraintLeft_toRightOf="@+id/tv_Real"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_labeldateSortie"/>
+
+
+
+            <TextView
+                android:id="@+id/tv_labelbudget"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:textColor="#303179"
+                android:layout_marginTop="10sp"
+                android:layout_marginRight="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tv_labelrecette"
+                app:layout_constraintTop_toBottomOf="@+id/tv_dateSortie"/>
+
+            <TextView
+                android:id="@+id/tv_labelrecette"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="12sp"
+                android:textColor="#303179"
+                android:layout_marginLeft="10dp"
+                android:gravity="center"
+                android:layout_marginTop="10sp"
+                app:layout_constraintLeft_toRightOf="@+id/tv_labelbudget"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_dateSortie"/>
+
+
+            <TextView
+                android:id="@+id/tv_budget"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="25sp"
+                android:textColor="#303179"
+                android:layout_marginTop="10sp"
+                android:gravity="center"
+                android:layout_marginRight="10dp"
+                android:text="@{Integer.toString(viewModel.film.budget)}"
+                android:paddingBottom="20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tv_recette"
+                app:layout_constraintTop_toBottomOf="@+id/tv_labelbudget"/>
+
+            <TextView
+                android:id="@+id/tv_recette"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:textColor="#303179"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="25sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10sp"
+                android:gravity="center"
+                android:text="@{Integer.toString(viewModel.film.montantRecette)}"
+                android:paddingBottom="20dp"
+                app:layout_constraintLeft_toRightOf="@+id/tv_budget"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_labelrecette"/>
+
+
+
+
+            <TextView
+                android:id="@+id/tv_labelcat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="#303179"
+                android:layout_marginBottom="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:layout_marginTop="10sp"
+                android:layout_marginRight="10dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tv_labelduree"
+                app:layout_constraintTop_toBottomOf="@+id/tv_recette"/>
+
+            <TextView
+                android:id="@+id/tv_labelduree"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="#303179"
+                android:textSize="12sp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10sp"
+                android:gravity="center"
+                app:layout_constraintLeft_toRightOf="@+id/tv_labelcat"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_recette"/>
+
+            <TextView
+                android:id="@+id/tv_cat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="25sp"
+                android:textColor="#303179"
+                android:gravity="center"
+                android:layout_marginTop="10sp"
+                android:layout_marginRight="10dp"
+                android:text="@{viewModel.cat}"
+                android:paddingBottom="20dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/tv_duree"
+                app:layout_constraintTop_toBottomOf="@+id/tv_labelcat"/>
+
+            <TextView
+                android:id="@+id/tv_duree"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16sp"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="25sp"
+                android:layout_marginLeft="10dp"
+                android:textColor="#303179"
+                android:layout_marginTop="10sp"
+                android:text="@{Integer.toString(viewModel.film.duree)}"
+                android:paddingBottom="20dp"
+                app:layout_constraintLeft_toRightOf="@+id/tv_cat"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_labelduree"/>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/tv_guideline"

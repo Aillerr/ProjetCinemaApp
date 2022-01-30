@@ -16,4 +16,10 @@
     <string name="ActorList">Liste des acteurs</string>
     <string name="RealList">Liste des Réalisateurs</string>
     <string name="PersonList">Liste des Personnages</string>
+    <string name="tvLabelReal">Réalisateur :</string>
+    <string name="tvLabelbudget">Budget :</string>
+    <string name="tvLabelcat">Catégorie :</string>
+    <string name="tvLabeldateSortie">Date de sortie :</string>
+    <string name="tvLabelduree">Durée en minutes :</string>
+    <string name="tvLabelrecette">Recette en € :</string>
 </resources>

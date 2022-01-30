@@ -45,13 +45,15 @@ class RegisterFragment : Fragment() {
         }
 
 
-        viewModel.navigateToHomeFragment.observe(viewLifecycleOwner, { token ->
-            token?.let {
-                this.findNavController().navigate(
-                    RegisterFragmentDirections
-                        .actionRegisterFragmentToHomeFragment(token))
-                Log.i("Navigating to HOME", "Successful registering - uid : $token")
-                viewModel.doneNavigating()
+        viewModel.navigateToHomeFragment.observe(viewLifecycleOwner, { code ->
+            code?.let {
+                if(code==200) {
+                    this.findNavController().navigate(
+                        RegisterFragmentDirections
+                            .actionRegisterFragmentToLoginFragment())
+                    Toast.makeText(this.context, "Account successfully created", Toast.LENGTH_SHORT).show()
+                    viewModel.doneNavigating()
+                }else Toast.makeText(this.context, "Error when creating the account", Toast.LENGTH_SHORT).show()
             }
         })
 

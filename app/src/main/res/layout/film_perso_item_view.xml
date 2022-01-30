@@ -4,19 +4,18 @@
 
     <data>
         <variable
-            name="real"
-            type="com.polytech.applicationcinma.model.Realisateur" />
+            name="film"
+            type="com.polytech.applicationcinma.PersoFilmList" />
         <variable
             name="clickListener"
-            type="com.polytech.applicationcinma.adapters.RealListener" />
+            type="com.polytech.applicationcinma.adapters.FilmsPersoListener" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="6sp"
-        android:background="#F6E6E2"
-        android:onClick="@{() -> clickListener.onClick(real)}">
+        android:layout_margin="6dp"
+        android:onClick="@{() -> clickListener.onClick(film)}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -27,7 +26,7 @@
                 android:id="@+id/tv_name_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{real.nomRea}"
+                android:text="@{film.titre}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Title"
                 android:textSize="20sp"
                 app:layout_constraintLeft_toLeftOf="parent"

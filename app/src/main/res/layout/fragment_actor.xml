@@ -18,7 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="6sp"
-            android:paddingTop="60sp">
+            android:paddingTop="60sp"
+            android:background="#F6E6E2">
 
             <ImageView
                 android:id="@+id/iv_imgFilm"

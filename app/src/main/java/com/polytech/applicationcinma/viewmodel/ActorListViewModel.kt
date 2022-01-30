@@ -34,7 +34,7 @@ class ActorListViewModel(
 
     private fun getActorsFromAPI() {
         coroutineScope.launch {
-            val getPresetsDeferred = MyApi.retrofitService.getActors()
+            val getPresetsDeferred = MyApi.retrofitService.getActors(token)
             try {
                 val listResult = getPresetsDeferred.await()
                 _actors.value = listResult

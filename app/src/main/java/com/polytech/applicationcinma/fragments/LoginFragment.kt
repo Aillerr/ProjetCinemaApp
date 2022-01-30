@@ -50,6 +50,7 @@ class LoginFragment : Fragment() {
                     LoginFragmentDirections
                         .actionLoginFragmentToHomeFragment(token))
                 Log.i("Navigating to HOME", "Successful login - uid : $token")
+                Toast.makeText(this.context, "Successfully logged in", Toast.LENGTH_SHORT).show()
                 viewModel.doneNavigating()
             }
         })

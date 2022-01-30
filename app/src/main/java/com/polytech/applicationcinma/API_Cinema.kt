@@ -7,12 +7,10 @@ import com.squareup.moshi.Json
 import kotlinx.coroutines.Deferred
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 
 private const val BASE_URL = "http://cinema.erebz.fr:80/"
@@ -27,39 +25,40 @@ private var retrofit = Retrofit.Builder()
 interface Api {
 
     //LOGIN & REGISTER
-    @POST("login")
-    fun login(@Body logInfo: Utilisateur) : Deferred<loginRet>
+    @Headers("Content-Type: application/json")
+    @POST("authentification/login")
+    fun login(@Body logInfo: LoginInfo) : Deferred<loginRet>
 
-    @POST("register")
-    fun register(@Body regInfo: Utilisateur) : Deferred<loginRet>
+    @POST("authentification/register")
+    fun register(@Body regInfo: LoginInfo) : Deferred<Response<Void>>
 
 
     //GET LISTS
     @GET("films/list")
-    fun getFilms() : Deferred<List<Film>>
+    fun getFilms(@Header("Authorization") authHeader: String) : Deferred<List<PersoFilmList>>
 
     @GET("acteurs/list")
-    fun getActors() : Deferred<List<Acteur>>
+    fun getActors(@Header("Authorization") authHeader: String) : Deferred<List<Acteur>>
 
     @GET("realisateurs/list")
-    fun getReals() : Deferred<List<Realisateur>>
+    fun getReals(@Header("Authorization") authHeader: String) : Deferred<List<Realisateur>>
 
     @GET("personnages/list")
-    fun getPersons() : Deferred<List<Personnage>>
+    fun getPersons(@Header("Authorization") authHeader: String) : Deferred<List<Personnage>>
 
 
     //ITEM DATA
     @GET("films/{NoFilm}")
-    fun getFilm(@Path("NoFilm") NoFilm: Int): Deferred<Film>
+    fun getFilm(@Path("NoFilm") NoFilm: Int, @Header("Authorization") authHeader: String): Deferred<PersoFilmList>
 
     @GET("acteurs/{NoActor}")
-    fun getActor(@Path("NoActor") NoActor: Int): Deferred<Acteur>
+    fun getActor(@Path("NoActor") NoActor: Int, @Header("Authorization") authHeader: String): Deferred<Acteur>
 
     @GET("realisateurs/{NoReal}")
-    fun getReal(@Path("NoReal") NoReal: Int): Deferred<Realisateur>
+    fun getReal(@Path("NoReal") NoReal: Int, @Header("Authorization") authHeader: String): Deferred<Realisateur>
 
     @GET("personnages/{NoPerson}")
-    fun getPerson(@Path("NoPerson") NoPerson: Int): Deferred<Personnage>
+    fun getPerson(@Path("NoPerson") NoPerson: Int, @Header("Authorization") authHeader: String): Deferred<Personnage>
 
 }
 
@@ -82,7 +81,25 @@ object MyApi {
         retrofit.create(Api::class.java) }
 }
 
+data class LoginInfo(
+    @SerializedName("nomUtil") val nomUtil: String?,
+    @SerializedName("motPasse") val motPasse: String?
+)
+
 data class loginRet(
+    @Json(name="role") val role: String,
     @Json(name="token") val token: String,
-    @Json(name="response") val response: Boolean
+)
+
+data class PersoFilmList(
+    @Json(name="noFilm") val noFilm: Int,
+    @Json(name="titre") val titre: String,
+    @Json(name="image") val image: String,
+    @Json(name="duree") val duree: Int,
+    @Json(name="dateSortie") val dateSortie: String,
+    @Json(name="budget") val budget: Int,
+    @Json(name="montantRecette") val montantRecette: Int,
+    @Json(name="realisateur") val realisateur: Realisateur,
+    @Json(name="categorie") val categorie: Categorie,
+    @Json(name="personnages") val personnages: List<Personnage>,
 )

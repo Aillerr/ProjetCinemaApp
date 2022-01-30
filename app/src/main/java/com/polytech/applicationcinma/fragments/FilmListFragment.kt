@@ -12,7 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.polytech.applicationcinma.R
 import com.polytech.applicationcinma.adapters.FilmsListener
+import com.polytech.applicationcinma.adapters.FilmsPersoListener
 import com.polytech.applicationcinma.adapters.MyListAdapterFilms
+import com.polytech.applicationcinma.adapters.MyListAdapterPersoFilms
 import com.polytech.applicationcinma.databinding.FragmentFilmListBinding
 import com.polytech.applicationcinma.viewmodel.FilmListViewModel
 import com.polytech.applicationcinma.viewmodelfactory.FilmListViewModelFactory
@@ -36,7 +38,7 @@ class FilmListFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
-        val adapter = MyListAdapterFilms(FilmsListener { fid ->
+        val adapter = MyListAdapterPersoFilms(FilmsPersoListener { fid ->
             Log.i("INFO -- Preset selected", "Film choosen : $fid")
             this.findNavController().navigate(
                 FilmListFragmentDirections

@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.polytech.applicationcinma.LoginInfo
 import com.polytech.applicationcinma.MyApi
 import com.polytech.applicationcinma.dao.UtilisateurDAO
 import com.polytech.applicationcinma.model.Utilisateur
@@ -25,17 +26,12 @@ class LoginViewModel(
      * Login with API
      */
     private fun loginFromAPI(user: Utilisateur) {
+        val loginfo = LoginInfo(user.NomUtil, user.MotPasse)
         coroutineScope.launch {
-            val loginDeferred = MyApi.retrofitService.login(user)
+            val loginDeferred = MyApi.retrofitService.login(loginfo)
             try {
                 val loginResult = loginDeferred.await()
-                if(loginResult.response) {
-                    noError()
-                    _navigateToHomeFragment.value = loginResult.token
-                }else{
-                    _errorLogin.value = true
-                    return@launch
-                }
+                _navigateToHomeFragment.value = loginResult.token
             }catch (e: Exception) {
                 Log.i("API ERROR -- Login", "Exception with API -- Using local DB")
                 _errorLogin.value = true

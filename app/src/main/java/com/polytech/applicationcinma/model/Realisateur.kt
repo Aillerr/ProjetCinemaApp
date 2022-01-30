@@ -15,24 +15,24 @@ import com.squareup.moshi.Json
 @Keep
 @Entity(tableName = "Realisateur")
 data class Realisateur  (
-    @Json(name="NoRea")
-    @SerializedName("NoRea")
+    @Json(name="noRea")
+    @SerializedName("noRea")
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "NoRea")
     private var _NoRea: Int = 0,
 
-    @Json(name="NomRea")
-    @SerializedName("NomRea")
+    @Json(name="nomRea")
+    @SerializedName("nomRea")
     @ColumnInfo(name = "NomRea")
     private var _NomRea: String? = "",
 
-    @Json(name="PrenRea")
-    @SerializedName("PrenRea")
+    @Json(name="prenRea")
+    @SerializedName("prenRea")
     @ColumnInfo(name = "PrenRea")
     private var _PrenRea: String? = "",
 
-    @Json(name="Image")
-    @SerializedName("Image")
+    @Json(name="image")
+    @SerializedName("image")
     @ColumnInfo(name = "Image")
     private var _Image: String? = "",
 

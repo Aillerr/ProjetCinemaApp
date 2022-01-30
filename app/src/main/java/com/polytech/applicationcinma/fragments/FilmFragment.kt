@@ -40,12 +40,18 @@ class FilmFragment : Fragment() {
         binding.viewModel = viewModel
 
         binding.apply {
-
+            tvLabelReal.text = getString(R.string.tvLabelReal)
+            tvLabelbudget.text = getString(R.string.tvLabelbudget)
+            tvLabelcat.text = getString(R.string.tvLabelcat)
+            tvLabeldateSortie.text = getString(R.string.tvLabeldateSortie)
+            tvLabelduree.text = getString(R.string.tvLabelduree)
+            tvLabelrecette.text = getString(R.string.tvLabelrecette)
         }
 
         viewModel.apiOK.observe(viewLifecycleOwner, { res ->
             res?.let {
-                Glide.with(this).load(viewModel.film.value?.Image).into(binding.ivImgFilm);
+                //Glide.with(this).load(viewModel.film.value?.Image).into(binding.ivImgFilm);
+
             }
         })
 

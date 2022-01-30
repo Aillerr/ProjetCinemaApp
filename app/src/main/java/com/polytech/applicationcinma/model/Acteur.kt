@@ -15,29 +15,29 @@ import com.squareup.moshi.Json
 @Keep
 @Entity(tableName = "Acteur")
 data class Acteur  (
-    @Json(name="NoAct")
-    @SerializedName("NoAct")
+    @Json(name="noAct")
+    @SerializedName("noAct")
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "NoAct")
     private var _NoAct: Int = 0,
 
-    @Json(name="NomAct")
-    @SerializedName("NomAct")
+    @Json(name="nomAct")
+    @SerializedName("nomAct")
     @ColumnInfo(name = "NomAct")
     private var _NomAct: String? = "",
 
-    @Json(name="PrenAct")
-    @SerializedName("PrenAct")
+    @Json(name="prenAct")
+    @SerializedName("prenAct")
     @ColumnInfo(name = "PrenAct")
     private var _PrenAct: String? = "",
 
-    @Json(name="DateNaiss")
-    @SerializedName("DateNaiss")
+    @Json(name="dateNaiss")
+    @SerializedName("dateNaiss")
     @ColumnInfo(name = "DateNaiss")
     private var _DateNaiss: Long? = 0L,
 
-    @Json(name="DateDeces")
-    @SerializedName("DateDeces")
+    @Json(name="dateDeces")
+    @SerializedName("dateDeces")
     @ColumnInfo(name = "DateDeces")
     private var _DateDeces: Long? = 0L,
 
