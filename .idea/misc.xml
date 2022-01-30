@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/activity_main.xml" value="0.2359375" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/actor_item_view.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/film_item_view.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/fragment_acto_listragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/fragment_actor.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/fragment_actor_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/fragment_film.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/fragment_film_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/fragment_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/fragment_params.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/fragment_person.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/fragment_person_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/fragment_real.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/fragment_real_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/fragment_register.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/person_item_view.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/axelg/AndroidStudioProjects/ApplicationCinma/app/src/main/res/layout/real_item_view.xml" value="0.36666666666666664" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

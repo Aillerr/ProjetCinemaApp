@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_cinema"
+    app:startDestination="@id/loginFragment">
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.polytech.applicationcinma.fragments.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.polytech.applicationcinma.fragments.RegisterFragment"
+        android:label="RegisterFragment"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/action_registerFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.polytech.applicationcinma.fragments.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <argument
+            android:name="token"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_homeFragment_to_filmListFragment"
+            app:destination="@id/filmListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_actorListFragment"
+            app:destination="@id/actorListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_realListFragment"
+            app:destination="@id/realListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_personListFragment"
+            app:destination="@id/personListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/actorListFragment"
+        android:name="com.polytech.applicationcinma.fragments.ActorListFragment"
+        android:label="ActorListFragment"
+        tools:layout="@layout/fragment_actor_list">
+        <argument
+            android:name="token"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_actorListFragment_to_actorFragment"
+            app:destination="@id/actorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filmListFragment"
+        android:name="com.polytech.applicationcinma.fragments.FilmListFragment"
+        android:label="FilmListFragment"
+        tools:layout="@layout/fragment_film_list">
+        <argument
+            android:name="token"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_filmListFragment_to_filmFragment"
+            app:destination="@id/filmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personListFragment"
+        android:name="com.polytech.applicationcinma.fragments.PersonListFragment"
+        android:label="PersonListFragment"
+        tools:layout="@layout/fragment_person_list">
+        <argument
+            android:name="token"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_personListFragment_to_personFragment"
+            app:destination="@id/personFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/realListFragment"
+        android:name="com.polytech.applicationcinma.fragments.RealListFragment"
+        android:label="RealListFragment"
+        tools:layout="@layout/fragment_real_list">
+        <argument
+            android:name="token"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_realListFragment_to_realFragment"
+            app:destination="@id/realFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/actorFragment"
+        android:name="com.polytech.applicationcinma.fragments.ActorFragment"
+        android:label="ActorFragment"
+        tools:layout="@layout/fragment_actor">
+        <argument
+            android:name="token"
+            app:argType="string" />
+        <argument
+            android:name="aid"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/filmFragment"
+        android:name="com.polytech.applicationcinma.fragments.FilmFragment"
+        android:label="FilmFragment"
+        tools:layout="@layout/fragment_film">
+        <argument
+            android:name="token"
+            app:argType="string" />
+        <argument
+            android:name="fid"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/realFragment"
+        android:name="com.polytech.applicationcinma.fragments.RealFragment"
+        android:label="RealFragment"
+        tools:layout="@layout/fragment_real">
+        <argument
+            android:name="token"
+            app:argType="string" />
+        <argument
+            android:name="rid"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/personFragment"
+        android:name="com.polytech.applicationcinma.fragments.PersonFragment"
+        android:label="PersonFragment"
+        tools:layout="@layout/fragment_person">
+        <argument
+            android:name="token"
+            app:argType="string" />
+        <argument
+            android:name="pid"
+            app:argType="integer" />
+    </fragment>
+</navigation>

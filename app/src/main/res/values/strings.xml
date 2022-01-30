@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">ApplicationCinéma</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btFilms">Films</string>
+    <string name="btPerson">Personnages</string>
+    <string name="btParams">Paramètres</string>
+    <string name="evLogin">Nom d\'utilisateur</string>
+    <string name="evPwd">Mot de passe</string>
+    <string name="login">Se connecter</string>
+    <string name="register">Créer un compte</string>
+    <string name="evPwdCheck">Confirmation du mot de passe</string>
+    <string name="btReal">Réalisateurs</string>
+    <string name="btActor">Acteurs</string>
+    <string name="filmList">Liste des films</string>
+    <string name="ActorList">Liste des acteurs</string>
+    <string name="RealList">Liste des Réalisateurs</string>
+    <string name="PersonList">Liste des Personnages</string>
+</resources>
